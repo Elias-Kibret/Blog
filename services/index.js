@@ -37,27 +37,29 @@ export const getPost=async ()=>{
 
 
 
-export const getRecentPosts = async () => {
-  const query = gql`
-    query GetPostDetails() {
-      posts(
-        orderBy: createdAt_ASC
-        last: 3
-      ) {
-        title
-        featuredImage {
-          url
-        }
-        createdAt
-        slug
-      }
-    }
-  `;
-  const result = await request(graphqlAPI, query);
+         export const getRecentPosts = async () => {
+              const query = gql`
+              query GetPostDetails() {
+                 posts( orderBy: createdAt_ASC
+                         last: 3
+                       ) {
+                            title
+                            featuredImage {
+                            url
+                           }
+                          createdAt
+                          slug
+                   }
+                 }
+              `;
+           const result = await request(graphqlAPI, query);
+            return result.posts;
+         };
 
-  return result.posts;
-};
+                                             // Elias Kibret
 
+
+         
   export const getSimilarPosts=async()=>{
     const query=gql`
     query GetPostDetails($slug:String!, $categories:[String!]){
@@ -77,3 +79,19 @@ export const getRecentPosts = async () => {
           const result=await request(graphqlAPI, query)
           return result.posts
         }
+
+  export const getCategorie =async ()=>{
+     const query=gql`
+        
+          query MyQuery {
+            categories {
+              slug
+              name
+            }
+          
+
+        }
+     `
+     const result=await request(graphqlAPI, query)
+     return result.categories
+  }   
