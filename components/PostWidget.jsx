@@ -1,23 +1,40 @@
 import React,{useState, useEffect} from 'react'
 import moment from 'moment'
-import Link from 'next/l'
-import { getRecentPosts } from '../services'
+import Link from 'next/link'
+import { getRecentPosts,getSimilarPosts } from '../services'
 const PostWidget = ({categories ,slug}) => {
-  const [relatedPost, setRelatedPost] = useState([])
+  const [relatedPost, setRelatedPosts] = useState([])
   useEffect(() => {
          if(slug)
          {
-          getSimilarPosts(category,slug).then((result)=>setRelatedPost(result))
+          getSimilarPosts(categories,slug).then((result)=>setRelatedPost(result))
          }
          else{
-          getRecentPosts(category,slug).then((result)=>setRelatedPosts(result))
+          getRecentPosts().then((result)=>setRelatedPosts(result))
          }
   
-  }, [third])
-  
+  }, [slug])
+  console.log(relatedPost)
   return (
-    <div>
+    <div className='bg-white shadow-lg rounded-lg p-8 mb-8'>
+       <h3>
+        {slug?"Related Posts":"Recent Post"}
+       </h3>
+       {
+        relatedPost.map((post)=>(
+          <div key={post.title} className="flex items-center w-full mb-4">
+            <div className='flex-none'>
+              <img 
+                 alt={post.title}
+                 height="60px"
+                 width="60px" 
+                 className='align-middle rounded-full'   
+                 src={post.featuredImage.url}          />
+            </div>
 
+          </div>
+        ))
+       }
     </div>
   )
 }
