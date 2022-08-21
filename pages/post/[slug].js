@@ -13,7 +13,7 @@ const PostDetails = ({post}) => {
             </div>
             <div className='col-span-1 lg:col-span-4'>
                 <div className='relative lg:sticky top-8'>
-                    <PostWidget/>
+                    <PostWidget  slug={post.slug} categories={post.categories.map((category) => category.slug)}/>
                     <Category/>
                     </div>  
             </div>
@@ -30,5 +30,15 @@ export async function getStaticProps({params})
   const data=await getPostDetails(params.slug)
   return {
     props:{post:data}
+  }
+}
+
+
+export async function getStaticPaths(){
+  const post=await getPost()
+
+  return  {
+    paths:post.map(({node:{slug}})=>({params:{slug}})),
+    fallback:false
   }
 }
