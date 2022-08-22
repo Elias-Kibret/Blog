@@ -76,7 +76,7 @@ export const getPost=async ()=>{
               }
             }
           `
-          const result=await request(graphqlAPI, query)
+          const result=await request(graphqlAPI, query, {categories,slug})
           return result.posts
         }
 
@@ -92,7 +92,7 @@ export const getPost=async ()=>{
 
         }
      `
-     const result=await request(graphqlAPI, query, {categories,slug})
+     const result=await request(graphqlAPI, query)
      return result.posts
   }   
 
