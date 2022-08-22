@@ -80,20 +80,18 @@ export const getPost=async ()=>{
           return result.posts
         }
 
-  export const getCategorie =async ()=>{
+  export const getCategories  =async ()=>{
      const query=gql`
-        
-          query MyQuery {
-            categories {
-              slug
-              name
-            }
-          
+     query MyQuery () {
+      categories {
+        slug
+        name
+      }
+    }
 
-        }
      `
      const result=await request(graphqlAPI, query)
-     return result.posts
+     return result.categories
   }   
 
 

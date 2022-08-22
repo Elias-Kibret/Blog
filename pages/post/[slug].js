@@ -25,20 +25,20 @@ const PostDetails = ({post}) => {
 
 export default PostDetails
 
-export async function getStaticProps({params})
-{
-  const data=await getPostDetails(params.slug)
+export async function getStaticProps({ params }) {
+  const data = await getPostDetails(params.slug);
   return {
-    props:{post:data}
-  }
+    props: {
+      post: data,
+    },
+  };
 }
-
 
 export async function getStaticPaths(){
   const post=await getPost()
 
   return  {
     paths:post.map(({node:{slug}})=>({params:{slug}})),
-    fallback:false
+    fallback:true
   }
 }
