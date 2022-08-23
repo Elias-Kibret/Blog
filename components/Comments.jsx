@@ -19,28 +19,36 @@ const Comments = ({slug}) => {
     const {value:name}=nameEl.current
     const {value:email}=emailEl.current
     const {checked:storeData}=storeDataEl.current
-    console.log(name,email,comment)
-    if(!comment|| !name || !email ){
+     
+    if(!comment || !name || !email ){
          setError(!error)
          return
     }
     const commentObj={
       name,email,comment,slug
     }
-    if(storeData){
-      localStroage.setItem("name",name)
-      localStroage.setItem("email", email)
+    if(typeof window !=="undefined"){
+
+      if(storeData){
+        localStorage.setItem('name',name)
+        localStorage.setItem('email', email)
+      }
+      else{
+      localStorage.removeItem('name',name)
+      localStorage.removeItem('email',email)
+      }
     }
-    else{
-    localStroage.removeItem("name",name)
-    localStroage.removeItem("email",email)
-    }
+  
     submitComment(commentObj).then((res)=>{
-      setShowSuccessMessage(!showSuccessMessage);
+      setShowSuccessMessage(true);
       setTimeout(()=>{
-        setShowSuccessMessage(!showSuccessMessage);
+        setShowSuccessMessage(false);
       },3000)
+     
     })
+  nameEl.current.value=''
+  emailEl.current.value=''
+  commentEl.current.value=''
   }
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
