@@ -1,8 +1,10 @@
 import Head from 'next/head'
+import { FeaturedPost } from '../components'
 import Category from '../components/Category'
 import PostCard from '../components/PostCard'
 import PostWidget from '../components/PostWidget'
 import {getPost} from '../services'
+import { getFeaturedPost } from '../services'
  const post =[
   {title:'React Testing',excerpt:'Learn React Testing'},
   {title:'React with Taiwind',excerpt:'Learn React with Tailwind'},
@@ -14,6 +16,7 @@ const Home = ({posts}) => {
         <title>Elias Kibret</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <FeaturedPost/>
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
         <div className='lg:col-span-8 col-span-1'>
           

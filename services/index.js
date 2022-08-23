@@ -160,3 +160,27 @@ export const getPost=async ()=>{
     return result.comments
  }   
  
+
+ export const getFeaturedPost=async ()=>{
+  const query=gql`
+     query GetFeaturedPost () {
+      posts(where: {featuredPost: true}) {
+        featuredImage {
+          url
+        }
+        author {
+          name
+          photo {
+            url
+          }
+        }
+        title
+        slug
+
+      }
+     }
+  
+  `
+  const result=await request(graphqlAPI, query)
+  return result.posts
+ }
