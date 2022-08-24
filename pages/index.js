@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import { FeaturedPost } from '../components'
+import {FeaturedPosts} from '../sections/index'
+
 import Category from '../components/Category'
 import PostCard from '../components/PostCard'
 import PostWidget from '../components/PostWidget'
@@ -16,7 +17,7 @@ const Home = ({posts}) => {
         <title>Elias Kibret</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FeaturedPost/>
+      <FeaturedPosts/>
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
         <div className='lg:col-span-8 col-span-1'>
           

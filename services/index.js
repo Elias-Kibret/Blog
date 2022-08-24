@@ -161,26 +161,27 @@ export const getPost=async ()=>{
  }   
  
 
- export const getFeaturedPost=async ()=>{
-  const query=gql`
-     query GetFeaturedPost () {
+ export const getFeaturedPosts = async () => {
+  const query = gql`
+    query GetCategoryPost() {
       posts(where: {featuredPost: true}) {
-        featuredImage {
-          url
-        }
         author {
           name
           photo {
             url
           }
         }
+        featuredImage {
+          url
+        }
         title
         slug
-
+        createdAt
       }
-     }
-  
-  `
-  const result=await request(graphqlAPI, query)
-  return result.posts
- }
+    }   
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.posts;
+};
