@@ -2,6 +2,7 @@ import { get } from 'https'
 import React ,{useEffect,useState} from 'react'
 import { getFeaturedPost } from '../services'
 import Link from 'next/link'
+import Slider from 'react-slick'
 const FeaturedPost = () => {
 const [featuredPosts, setFeaturedPosts] = useState([])
      useEffect(()=>{
@@ -9,11 +10,20 @@ getFeaturedPost().then((result)=>{
     setFeaturedPosts(result)
 })
      },[])
-    console.log(featuredPosts)
+     const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 3
+      };
   return (
-    <div className=' flex  flex-wrap mb-8'>
+    <div className=' mb-8'>
+        <Slider {...settings} className=" ">
+
         {
             featuredPosts.map((items)=>(
+                
                  <Link href={`post/${items.slug}`}>
                  
                 <div className='max-w-250px border border-gray-100 rounded-lg mx-4 h-150px relative object-contain'>
@@ -44,6 +54,8 @@ getFeaturedPost().then((result)=>{
                  </Link>
             ))
         }
+        </Slider>
+        
     </div>
   )
 }
