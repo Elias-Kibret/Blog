@@ -205,7 +205,7 @@ export const getAdjacentPosts = async (createdAt, slug) => {
       previous:posts(
         first: 1
         orderBy: createdAt_DESC
-        where: {slug_not: $slug, AND: {createdAt_lte: $createdAt}}
+        where: {slug_not: $slug, AND: {createdAt_gte: $createdAt}}
       ) {
         title
         featuredImage {

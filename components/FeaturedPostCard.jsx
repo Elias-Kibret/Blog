@@ -24,7 +24,6 @@ const FeaturedPostCard = ({ post }) => (
                               className='rounded-full'
                               />
                               <div>
-             
                               </div>
                               <h1 className='text-white ml-3  font-semibold'>{post.author.name}</h1>
                          </div>
