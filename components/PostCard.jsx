@@ -6,8 +6,8 @@ const PostCard = ({post}) => {
     <div className='bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8'>
        <div className='relative overflow-hidden shadow-md pb-80 mb-6'>
         <img 
-          src={post.featuredImage?.url}
-          alt={post.title}
+          src={post?.featuredImage?.url}
+          alt={post?.title}
           className="object-top absolute h-80 w-full object-cover shadow rounded-t-lg lg:rounded-lg"
         />
 
@@ -42,9 +42,9 @@ const PostCard = ({post}) => {
                         </span>
                        </div>
                       </div>
-                      <p className='text-center text-lg text-gray-700 font-normal px-4 lg:px-20 mb-8'>{post.excerpt}</p>
+                      <p className='text-center text-lg text-gray-700 font-normal px-4 lg:px-20 mb-8'>{post?.excerpt}</p>
                       <div className='text-center'>
-                           <Link href={`/post/${post.slug}`}>
+                           <Link href={`/post/${post?.slug}`}>
                             <span className='transition duration-500 
                                              transform hover:-translate-y-1 inline-block
                                              bg-pink-600 text-lg front-medium rounded-full text-white px-8 shadow-lg py-2
