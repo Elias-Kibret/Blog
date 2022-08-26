@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const FeaturedPostCard = ({ post }) => (
-<div className=' mb-8'>
+<div className=' mb-8 cursor-'>
 <Link href={`post/${post.slug}`}>
                  
                  <div className='overflow-hidden max-w-[270px] border border-gray-100 rounded-lg mx-4 h-170px relative object-cover'>
@@ -17,7 +17,6 @@ const FeaturedPostCard = ({ post }) => (
              
                         <div className=' px-3 py-5 bg-black absolute htop-50 bottom-0 right-0 left-0 bg-opacity-40 max-h-100px '>
                          <div className='flex items-center'>
-             
                               <img 
                               src={post.author.photo.url}
                               width="34px"
