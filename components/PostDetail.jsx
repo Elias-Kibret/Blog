@@ -45,8 +45,8 @@ const PostDetail = ({post}) => {
     <div className='bg-white shadow-kg rounded-lg lg-p-8 pb-12 mb-8'>
         <div className='relative overflow-hidden shadow-md mb-6'>
           <img
-          src={post.featuredImage?.url}
-          alt={post.title}
+          src={post?.featuredImage?.url}
+          alt={post?.title}
           className="object-top h-full w-full  rounded-t-lg"
           />
           </div>  
@@ -55,14 +55,14 @@ const PostDetail = ({post}) => {
             <div className='block lg:flex text-center items-center  mb-8 w-full'>
                <div className='flex items-center  mb-4 lg:mb-0 w-full lg:w-auto mr-8'>
                   <img 
-                     src={post.author.photo?.url}
-                     alt={post.author?.name}
+                     src={post?.author?.photo?.url}
+                     alt={post?.author?.name}
                      height="50px"
                      width="50px"
                      className='align-middle rounded-full border border-gray-200 shadow-md'
                   />
                   <p className='inline align-middle text-gray-700 ml-2 text-lg'>
-                    {post.author?.name}
+                    {post?.author?.name}
                   </p>
                         
                </div>
